@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* 確保背景覆蓋整個視窗高度 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('流星雨.jpg'); /* 替換為你的背景圖片 URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #FFD700;
+}
+
+.content {
+    margin: 120px auto 20px; /* 與導航欄保持間距 */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明背景增加對比度 */
+    border-radius: 30px; /* 圓角設計 */
+    width: 80%;
+    max-width: 800px;
+    box-sizing: border-box; /* 確保寬度包含內邊距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影提升質感 */}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content p, .content ul {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.content ul li {
+    margin-bottom: 10px;
+}
+
+.content ul li span {
+    color: #FFD700; /* 突出重點 */
+}
+
+.highlight {
+    color: #FFD700; /* 金色字體強調重點 */
+}

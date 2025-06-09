@@ -1,0 +1,174 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('天空.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    position: relative;
+}
+
+.side-container {
+    width: 200px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    position: fixed; /* 跟隨畫面滾動 */
+}
+
+.left-container {
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-container {
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.side-container img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+}
+
+.center-container {
+    flex: 1;
+    padding: 0 20px;
+    margin-left: 220px; /* 留出左側容器空間 */
+    margin-right: 220px; /* 留出右側容器空間 */
+}
+
+h1 {
+    text-align: center;
+    margin: 80px auto 20px; /* 上方增加足夠邊距，下方有邊距 */
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.8em;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 30px;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: lightgray;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.city-block {
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
+}
+
+.city-block h2 {
+    margin: 0 0 10px;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.day {
+    flex: 1;
+    margin: 0 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.day h3 {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.day p {
+    margin: 5px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 0.9em;
+    width: 100%;
+}
+.side-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    max-width: 300px;
+}
+
+#sunCanvas {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+}
+.question {
+    display: none;
+}
+.question.active {
+    display: block;
+}
