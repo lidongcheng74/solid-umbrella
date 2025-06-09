@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流星雨</title>
+    <link rel="stylesheet" href="mesteor.css">
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">首頁</a>
+        <a href="aurora.html">極光</a>
+        <a href="meteor%20shower.html">流星雨</a>
+        <a href="rainbow.html">宇宙</a>
+        <a href="snow.html">八大行星</a>
+    </div>
+
+    <div class="content">
+        <h1>流星雨</h1>
+        <p>
+            流星雨（英語：<span class="highlight">meteor shower</span>）是許多流星從空中單一輻射點發射出來的天文現象。
+            這些流星是宇宙中被稱為<span class="highlight">流星體</span>的碎片，在平行的軌道上運行時以極高速度投射進入地球大氣層的流束。
+        </p>
+        <p>
+            大部分的流星體都比沙礫還要小，因此幾乎所有的流星體都會在大氣層內被銷毀，不會擊中地球的表面；
+            能夠撞擊到地球表面的碎片稱為<span class="highlight">隕石</span>。
+            數量格外龐大或表現不尋常的流星雨會被稱為<span class="highlight">流星突出</span>（英語：<span class="highlight">meteor outbursts</span>）或
+            <span class="highlight">流星暴</span>（英語：<span class="highlight">meteor storms</span>），
+            可能會每小時出現的流星超過<span class="highlight">1,000顆</span>以上。
+        </p>
+    </div>
+    <div class="content">
+        <h1>流星雨的起源</h1>
+        <p>
+            在對角線上呈現<span class="highlight">紅光</span>的是恩克彗星產生的流星體。
+            拖曳在彗星 <span class="highlight">73P</span> 和其碎片之間的流星體。
+        </p>
+        <blockquote>
+            <span class="highlight">流星雨</span>是行星和彗星的碎片流交互作用造成的結果。
+        </blockquote>
+        <p>
+            彗星的瓦解和水蒸氣的噴發可以拖曳和產生碎片，因此 <span class="highlight">Fred Whipple</span> 在 <span class="highlight">1951</span> 年提出髒雪球理論：
+            環繞太陽的彗星是冰中嵌入岩石的小天體，這些冰可能是<span class="highlight">水</span>、<span class="highlight">甲烷</span>、<span class="highlight">氨</span>、或其它的揮發物單獨或混合著的組合；
+            岩石可以如同灰塵般的大小，也可以有其他如同卵石般不同的尺寸。
+        </p>
+        <p>
+            當這些冰因為溫暖而昇華時，他們的蒸發會拖曳出灰塵、沙粒、和卵石等固體。
+            彗星在軌道上每接近太陽一次，就會有一些冰被蒸發和傾卸出一些流星體。
+        </p>
+        <p>
+            近來，<span class="highlight">Peter Jenniskens</span> 質疑我們的短週期彗星流星雨不是由正常的水蒸氣蒸發的活動彗星，而是由罕見的已經休眠的彗星大量瓦解和潰散的碎片。
+            例如<span class="highlight">象限儀座流星雨</span>和<span class="highlight">雙子座流星雨</span>，
+            它們是來自<span class="highlight">小行星 2003 EH1</span> 和 <span class="highlight">法厄同（Phaethon）</span>，
+            分別在<span class="highlight">500 和 1,000 年前</span>產生的碎片形成的。
+        </p>
+    </div>
+    <div class="content">
+        <h1>著名的流星雨</h1>
+        <p>
+            在絕大部分的年份中，最主要的流星雨是<span class="highlight">英仙座流星雨</span>，
+            它的高峰期出現在每年的 <span class="highlight">8月12日</span>，每分鐘至少會出現一顆流星。
+        </p>
+        <ul>
+            <li>
+                最壯觀的流星雨應該是<span>獅子座流星雨</span>，被稱為<span>流星雨之王</span>，
+                它的高峰期大約在 <span class="highlight">11月17日</span>。
+            </li>
+            <li>
+                獅子座流星雨大約間隔 <span class="highlight">33年</span> 才會出現高峰期，
+                每小時有數千顆流星的<span>流星暴</span>。
+            </li>
+            <li>
+                1833年11月出現的<span>獅子座流星暴</span>使人類首度意識到流星雨的<span>輻射點</span>，
+                它是從明亮的<span>軒轅十二 (獅子座γ星)</span>附近輻射出來的。
+            </li>
+            <li>
+                上次的獅子座流星暴出現在 <span class="highlight">1999、2001 和 2002</span> 年。
+            </li>
+            <li>
+                在獅子座流星暴未出現的年份中，獅子座流星雨的活動遠低於<span>英仙座流星雨</span>。
+            </li>
+        </ul>
+    </div>
+    <footer>
+        版權所有 &copy; 2024 流星雨
+    </footer>
+    <audio id="background-music" autoplay loop>
+        <source src="心願便利貼.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const music = document.getElementById('background-music');
+            music.volume = 0.6; // 設定音量為 20%
+            music.currentTime = 30; // 從第 8 秒開始播放
+            music.play().catch(err => {
+                console.error('音樂播放失敗：', err);
+            });
+    </script>
+</body>
+</html>

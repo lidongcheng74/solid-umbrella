@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Background</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('極光.png'); /* 替換為你的圖片路徑 */
+            background-size: cover; /* 確保圖片覆蓋整個背景 */
+            background-position: center; /* 圖片置中 */
+            background-repeat: no-repeat; /* 圖片不重複 */
+            height: 100vh; /* 讓背景填滿整個視窗 */
+            overflow: hidden; /* 防止滾動 */
+        }
+        .navbar {
+            display: flex;
+            justify-content: center; /* 將內容置中 */
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            padding: 10px 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 往上移動內容 */
+            height: 100vh;
+            overflow: hidden;
+            padding-top: 0; /* 移到頂部 */
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* 頂部對齊 */
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            padding-top: 100px; /* 問題內容與頂部的距離增加 */
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-item p {
+            font-size: 1.2em; /* 增大字體 */
+            font-weight: bold; /* 加粗字體 */
+            text-align: center; /* 置中文字 */
+            line-height: 1.5; /* 自動斷行行距 */
+            max-width: 80%; /* 限制段落寬度以便更好地置中 */
+        }
+        .slider {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .slides img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">首頁</a>
+        <a href="aurora.html">極光</a>
+        <a href="meteor%20shower.html">流星雨</a>
+        <a href="rainbow.html">宇宙</a>
+        <a href="snow.html">八大行星</a>
+    </div>
+    <div class="content">
+        <div class="carousel">
+            <div class="carousel-item active">
+                <h2>Q1: 極光是如何形成的？</h2>
+                <p>極光，是一種僅出現於南北極圈周圍的一種自然現象。夜空中炫目的北極光，那輕柔散漫、虛實交錯的吳妙舞姿，帶給人一種迷幻的視覺感受，一直以來亦賦予冰島詩意的色彩。</p>
+                <p>簡單來說，「極光」是太陽發出的高速帶電粒子，或稱太陽風，來到地球表面時，在極區上空與大氣層的粒子產生交互碰撞作用，釋放出能量後所產生的發光現象。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q2: 北半球哪裡看得到北極光？</h2>
+                <p>極光是以帶狀形式出現的。南北半球各有一個極光帶，覆蓋兩極附近的區域：出現在北半球的叫北極光，出現在南半球的叫南極光。</p>
+                <p>北極光之所以叫北極光，是因為基本要在極北國家才能看得到北極光，低於北緯60°的地區很少出現極光現象。挪威、加拿大、格陵蘭、阿拉斯加、瑞典、芬蘭的北部，都是可以獵尋北極光的區域。</p>
+                <p>相較於其他國家，只有限定地區有機會一睹北極光風采，冰島整個國土面積都在極光帶上，因此全國任何一處地方都有機會看見北極光。冰島除了曾被CNN評選為全球五大最佳觀賞極光的地點，也被 孤獨星球 Lonely Planet 視為近年來最受遊客歡迎的追極光國家。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q3: 北極光長什麼樣子？有什麼顏色？</h2>
+                <p>極光是在夜裡的天空中移動的光幕，有帶狀、弧狀、幕狀和放射狀，隨著高空的風移動速度或快、或慢地飄動著，就好像是在漆黑的夜空舞台上，優雅演出的一場光之舞。</p>
+                <p>極光美麗又變幻莫測，然而最常見的顏色卻是灰白色或淡黃色，此時的極光看起就像雲一樣，不易被查覺。隨著亮度增加，顏色開始變得明顯，極光最常被肉眼看見的顏色為螢光綠色，其次是淡紫色、粉紅色、或是藍色的色調。這些顏色是由大氣中的氣體— 主要為氧氣和氮氣的混合物而造成的。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q4: 冰島的極光季節是什麼時候？</h2>
+                <p>北極光現象一年到頭都有機會發生，但因為不及日光明亮，所以需要很暗的天空來襯托。換言之，極光只有在漆黑的夜晚才能看到。</p>
+                <p>在冰島，一般來講，最適合看極光的季節是九月至隔年三月，但從八月中下旬，直到隔年的四月底，整整八個月的時間，無論黑夜時間的長短，只要天氣允許之下，極光都有可能在冰島漆黑的夜空中出現。</p>
+                <p>相對的，冰島的盛夏因為白晝現象，儘管太陽下山了天空還是明亮的，因此夏季期間的冰島是無法用肉眼看到北極光的。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q5: 在冰島能看到極光的幾率有多大？</h2>
+                <p>北極光必須要在晴朗無雲的夜空中才看得到，冰島雖然有全國都在極光帶上的優勢，但可惜的是，「晴朗無雲」在冰島卻很罕見。</p>
+                <p>冰島的天氣可以說是北半球可看見極光的地區當中最惡劣、多變的。若幸運遇上雨後天青的夜晚，也無法確定極光在這個夜晚是不是活躍，天氣晴朗的夜晚也有可能完全看不到北極光。</p>
+                <p>老實說，來冰島追尋極光，追尋的其實是一種緣分，完全是要看運氣的。極光可遇不可求，因此出現的機率到底有多大實在很難用一個確切的數字來回答。</p>
+                <p>幸運的話，連續好幾天都能欣賞到極光，反之，也可能連續好幾天，甚至整趟旅程都完全無法看到極光。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q6: 想要在冰島看到極光，有什麼先決條件？</h2>
+                <p>觀賞極光，除了黑夜是首要的先決條件外，「天氣」、「極光指數」及「光害害」這三項要素也決定了看不看得到極光的重要關鍵。</p>
+                <p>1.#WEATHER 天氣</p>
+                <p>2.#KP-INDEX 極光指數</p>
+                <p>極光指數一般只能預測3-5天，極光指數代表的是極光的活躍程度與極光帶涵蓋範圍的大小。</p>
+                <p>3.#LIGHT POLLUTION 光害</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q7: 氣溫越低越有機會看見極光嗎？</h2>
+                <p>許多人傾向將北極光與寒冷聯想在一起，因為此極光僅有在緯度高的地區容易被看見。</p>
+                <p>這其實是個誤解，看北極光不一定需要搭配寒冷的天氣，北極光需要的，是全黑的夜晚。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q8: 極光會在特定時間出現嗎？極光會持續多久？</h2>
+                <p>極光不會在一定的時間點出現。你有可能在晚上八點的時候看到極光，也可能在半夜三點才看到極光；極光出現可能只維持了五分鐘，也有可能持續了五小時。</p>
+                <p>這種不確定性，有些人認為追極光是一件相信令人興奮的事，但也有些人認為是種煎熬。</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Q9: 觀測極光需要朝特定方向看嗎？</h2>
+                <p>在中緯度地區（例如英國），尋找北極光時，建議是直接會往北方看。</p>
+                <p>然而在冰島，由於地理位置更靠近極圈，因此極光可能會任何一個方位或是頭頂上方出現。</p>
+                <p>當極光微弱時，建議可以從北方開始搜索；當極光強度為中度或強烈時，360度的天空都有可能發現極光的蹤跡。</p>
+            </div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="slides" id="slides">
+            <img src="極光1.jpg" alt="Photo 1">
+            <img src="極光2.jpg" alt="Photo 2">
+            <img src="極光3.jpg" alt="Photo 3">
+            <img src="極光4.jpg" alt="Photo 4">
+        </div>
+        <div class="buttons">
+            <button onclick="prevSlide()">&lt; 上一張</button>
+            <button onclick="nextSlide()">下一張 &gt;</button>
+        </div>
+    </div>
+    <footer>
+        版權所有 &copy; 2024 
+    </footer>
+    <audio id="background-music" autoplay loop>
+        <source src="再見電影院.mp3" type="audio/mpeg">
+    </audio>
+
+</body>
+<script>
+    const music = document.getElementById('background-music');
+        music.volume = 0.2; // 設定音量為 20%
+        music.currentTime = 8; // 從第 8 秒開始播放
+        music.play().catch(err => {
+            console.error('音樂播放失敗：', err);
+        });
+</script>
+<script>
+    // 控制圖片輪播
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    let currentIndex = 0;
+
+    function updateSlidePosition() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlidePosition();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlidePosition();
+    }
+
+    // 控制文字輪播
+    let textCurrentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+
+    function showSlide(index) {
+        items[textCurrentIndex].classList.remove('active');
+        textCurrentIndex = (index + items.length) % items.length;
+        items[textCurrentIndex].classList.add('active');
+    }
+
+    document.addEventListener('wheel', (event) => {
+        if (event.deltaY > 0) {
+            showSlide(textCurrentIndex + 1);
+        } else {
+            showSlide(textCurrentIndex - 1);
+        }
+    });
+</script>
+</html>

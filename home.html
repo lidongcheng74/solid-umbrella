@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣天氣資料</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">首頁</a>
+        <a href="aurora.html">極光</a>
+        <a href="meteor%20shower.html">流星雨</a>
+        <a href="rainbow.html">宇宙</a>
+        <a href="snow.html">八大行星</a>
+    </div>
+    <audio id="background-music" autoplay loop>
+        <source src="天空.mp3" type="audio/mpeg">
+    </audio>
+    <h1>台灣縣市三日天氣預報</h1>
+    <div class="main-container">
+        <!-- 左側日出 -->
+        <div class="side-container left-container">
+            <canvas id="sunCanvas" width="600" height="400"></canvas>
+            <h2>太陽位置</h2>
+            <p id="current-time">現在時間：正在載入...</p>
+        </div>
+
+        <!-- 中間天氣預報 -->
+        <div class="center-container">
+            <div id="weather-container" class="container">正在載入天氣資料...</div>
+        </div>
+
+        <!-- 右側日落 -->
+        <div class="side-container right-container">
+            <h2>日出時間</h2>
+            <p id="sunrise-time">正在載入...</p>
+            <h2>日落時間</h2>
+            <p id="sunset-time">正在載入...</p>
+        </div>
+    </div>
+    
+    <footer>
+        版權所有 &copy; 2024 台灣天氣預報
+    </footer>
+
+    <script>
+        const music = document.getElementById('background-music');
+            music.volume = 0.2; // 設定音量為 20%
+            music.currentTime = 80; // 從第 8 秒開始播放
+            music.play().catch(err => {
+                console.error('音樂播放失敗：', err);
+            });
+        function updateCurrentTime() {
+        const now = new Date();
+
+        // 格式化時間（例如 14:05）
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        // 顯示時間
+        const currentTimeElement = document.getElementById('current-time');
+        currentTimeElement.textContent = `現在時間：${hours}:${minutes}:${seconds}`;
+        // 每秒更新一次
+        setTimeout(updateCurrentTime, 1000);
+        }
+        // 初始執行
+        updateCurrentTime();
+        document.addEventListener('DOMContentLoaded', function () {
+            // 模擬日出與日落時間
+            const sunrise = '06:30';
+            const sunset = '17:45';
+
+            document.getElementById('sunrise-time').textContent = sunrise;
+            document.getElementById('sunset-time').textContent = sunset;
+
+            // 天氣 API 設定
+            const apiUrl = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001';
+            const params = {
+                Authorization: 'CWA-BB8E5625-2C08-4FD7-8EED-F8CC872EF07A',
+                format: 'JSON'
+            };
+
+            const queryString = Object.keys(params)
+                .map(key => `${key}=${encodeURIComponent(params[key])}`)
+                .join('&');
+            const requestUrl = `${apiUrl}?${queryString}`;
+
+            fetch(requestUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('weather-container');
+                    container.innerHTML = ''; // 清空預設內容
+
+                    const locations = data.records.location;
+
+                    locations.forEach(location => {
+                        const cityDiv = document.createElement('div');
+                        cityDiv.classList.add('city-block');
+
+                        const cityName = location.locationName;
+                        cityDiv.innerHTML = `<h2>${cityName}</h2>`;
+
+                        const forecastDiv = document.createElement('div');
+                        forecastDiv.classList.add('forecast');
+
+                        for (let i = 0; i < 3; i++) { // 顯示今天、明天、後天
+                            const timeSlot = location.weatherElement[0].time[i];
+                            const description = location.weatherElement[0]?.time[i]?.parameter?.parameterName || '無法取得';
+                            const rainChance = location.weatherElement[1]?.time[i]?.parameter?.parameterName || '無法取得';
+                            const minTemp = location.weatherElement[2]?.time[i]?.parameter?.parameterName || '無法取得';
+                            const maxTemp = location.weatherElement[4]?.time[i]?.parameter?.parameterName || '無法取得';
+
+                            const dayDiv = document.createElement('div');
+                            dayDiv.classList.add('day');
+                            dayDiv.innerHTML = `
+                                <h3>${timeSlot.startTime.split(' ')[0]}</h3>
+                                <p>天氣: ${description}</p>
+                                <p>降雨: ${rainChance}%</p>
+                                <p>溫度: ${minTemp}°C ~ ${maxTemp}°C</p>
+                            `;
+                            forecastDiv.appendChild(dayDiv);
+                        }
+
+                        cityDiv.appendChild(forecastDiv);
+                        container.appendChild(cityDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    const container = document.getElementById('weather-container');
+                    container.textContent = '無法載入天氣資料，請稍後再試。';
+                });
+        });
+    </script>
+    <script>
+        const canvas = document.getElementById('sunCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const centerX = width / 2;
+        const centerY = height * 0.8;
+        const radius = Math.min(width, height) / 2.5;
+
+        const sunriseTime = "06:30";
+        const sunsetTime = "17:45";
+
+        document.getElementById('sunrise-time').textContent = sunriseTime;
+        document.getElementById('sunset-time').textContent = sunsetTime;
+
+        function parseTime(time) {
+            const [hours, minutes] = time.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        const sunriseMinutes = parseTime(sunriseTime);
+        const sunsetMinutes = parseTime(sunsetTime);
+        const totalDaylightMinutes = sunsetMinutes - sunriseMinutes;
+
+        function getCurrentMinutes() {
+            const now = new Date();
+            return now.getHours() * 60 + now.getMinutes();
+        }
+
+        function drawSunPath(currentMinutes) {
+            // 清空畫布
+            ctx.clearRect(0, 0, width, height);
+
+            // 繪製軌跡
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI);
+            ctx.strokeStyle = '#FFA500';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            if (currentMinutes >= sunriseMinutes && currentMinutes <= sunsetMinutes) {
+                // 計算太陽的位置
+                const progress = (currentMinutes - sunriseMinutes) / totalDaylightMinutes;
+                const angle = Math.PI + progress * Math.PI;
+                const sunX = centerX + radius * Math.cos(angle);
+                const sunY = centerY + radius * Math.sin(angle);
+
+                // 繪製太陽
+                ctx.beginPath();
+                ctx.arc(sunX, sunY, 10, 0, 2 * Math.PI);
+                ctx.fillStyle = '#FFD700';
+                ctx.fill();
+            }
+        }
+
+        function updateSunPosition() {
+            const currentMinutes = getCurrentMinutes();
+            drawSunPath(currentMinutes);
+
+            if (currentMinutes >= sunriseMinutes && currentMinutes <= sunsetMinutes) {
+                setTimeout(updateSunPosition, 60000); // 每分鐘更新一次
+            }
+        }
+
+        updateSunPosition();
+    </script>
+   
+</body>
+</html>
